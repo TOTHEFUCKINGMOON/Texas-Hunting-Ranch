@@ -1,262 +1,521 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Primitive Modern Hunt – Texas Hunter Ranch | The Most Extreme Hunting Experience</title>
-    <meta name="description" content="Primitive Hunting & Tactical Survival Experiences in Texas. Become the Man Your Ancestors Would Respect.">
+
+    <meta name="description" content="Primitive Hunting &amp; Tactical Survival Experiences in Texas. Become the Man Your Ancestors Would Respect.">
+
     
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Manrope:wght@300;400;700&amp;display=swap" rel="stylesheet">
+
     
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
+
         tailwind.config = {
+
             theme: {
+
                 extend: {
+
                     colors: {
+
                         deepBlack: '#0A0A0A',
+
                         milGreen: '#4A4F36',
+
                         hunterGold: '#E0A220',
+
                         steelGrey: '#A6A6A6',
+
                         tacRed: '#8B1E1E',
+
                         desertBeige: '#D6C7A1',
+
                     },
+
                     fontFamily: {
+
                         display: ['Anton', 'sans-serif'],
+
                         body: ['Manrope', 'sans-serif'],
+
                     },
+
                     backgroundImage: {
-                        'hero-pattern': "linear-gradient(to bottom, rgba(10,10,10,0.3), rgba(10,10,10,1)), url('https://images.unsplash.com/photo-1533237264841-8650eb1b2383?q=80&w=2066&auto=format&fit=crop')",
+
+                        'hero-pattern': "linear-gradient(to bottom, rgba(10,10,10,0.3), rgba(10,10,10,1)), url('https://images.unsplash.com/photo-1533237264841-8650eb1b2383?q=80&w=2066&auto=format&fit=crop')", // Placeholder Image
+
                     }
+
                 }
+
             }
+
         }
+
     </script>
+
+
 
     <style>
-        body { background-color: #0A0A0A; color: #D6C7A1; overflow-x: hidden; }
-        .gold-glow:hover { box-shadow: 0 0 15px #E0A220; border-color: #E0A220; }
-        .crosshair-cursor { cursor: crosshair; }
-        
-        /* Canvas Styling */
-        #fireCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none; /* Permet de cliquer sur les boutons derrière */
-            z-index: 1; /* Derrière le texte mais devant l'image de fond si besoin */
-        }
 
-        .relative-content {
-            position: relative;
-            z-index: 10;
-        }
+        body { background-color: #0A0A0A; color: #D6C7A1; }
+
+        .gold-glow:hover { box-shadow: 0 0 15px #E0A220; border-color: #E0A220; }
+
+        .crosshair-cursor { cursor: crosshair; }
+
+        
 
         /* Sticky WhatsApp */
+
         .whatsapp-float {
+
             position: fixed;
+
             bottom: 90px;
+
             right: 20px;
+
             background-color: #25d366;
+
             color: white;
+
             border-radius: 50px;
+
             text-align: center;
+
+            font-size: 30px;
+
+            box-shadow: 2px 2px 3px #999;
+
             z-index: 100;
+
             padding: 10px 15px;
+
             display: flex;
+
             align-items: center;
+
             gap: 10px;
+
             font-family: 'Manrope', sans-serif;
+
             font-weight: bold;
+
             font-size: 16px;
+
         }
+
+
+
+        /* Bottom Sticky Bar */
 
         .sticky-bar {
+
             position: fixed;
+
             bottom: 0;
+
             width: 100%;
+
             background: #8B1E1E;
+
             color: white;
+
             text-align: center;
+
             padding: 10px;
+
             z-index: 99;
+
             font-family: 'Anton', sans-serif;
+
             letter-spacing: 1px;
+
         }
+
+
+
+        /* Modal Transitions */
 
         .modal { transition: opacity 0.3s ease-in-out; }
+
         .hidden-modal { opacity: 0; pointer-events: none; }
+
     </style>
-</head>
+
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.left-0{left:0px}.right-0{right:0px}.right-4{right:1rem}.top-2{top:0.5rem}.top-4{top:1rem}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.col-span-2{grid-column:span 2 / span 2}.mx-auto{margin-left:auto;margin-right:auto}.-mt-10{margin-top:-2.5rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-3{margin-right:0.75rem}.mt-10{margin-top:2.5rem}.mt-12{margin-top:3rem}.mt-2{margin-top:0.5rem}.mt-20{margin-top:5rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-96{height:24rem}.h-screen{height:100vh}.w-24{width:6rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.flex-grow{flex-grow:1}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.select-none{-webkit-user-select:none;user-select:none}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.space-x-8 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(2rem * var(--tw-space-x-reverse));margin-left:calc(2rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.border{border-width:1px}.border-2{border-width:2px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-gray-600{--tw-border-opacity:1;border-color:rgb(75 85 99 / var(--tw-border-opacity, 1))}.border-tacRed{--tw-border-opacity:1;border-color:rgb(139 30 30 / var(--tw-border-opacity, 1))}.border-transparent{border-color:transparent}.border-hunterGold{--tw-border-opacity:1;border-color:rgb(224 162 32 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-white\/10{border-color:rgb(255 255 255 / 0.1)}.border-white\/5{border-color:rgb(255 255 255 / 0.05)}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-deepBlack{--tw-bg-opacity:1;background-color:rgb(10 10 10 / var(--tw-bg-opacity, 1))}.bg-deepBlack\/90{background-color:rgb(10 10 10 / 0.9)}.bg-gray-100{--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity, 1))}.bg-gray-800{--tw-bg-opacity:1;background-color:rgb(31 41 55 / var(--tw-bg-opacity, 1))}.bg-milGreen{--tw-bg-opacity:1;background-color:rgb(74 79 54 / var(--tw-bg-opacity, 1))}.bg-milGreen\/20{background-color:rgb(74 79 54 / 0.2)}.bg-stone-900{--tw-bg-opacity:1;background-color:rgb(28 25 23 / var(--tw-bg-opacity, 1))}.bg-tacRed{--tw-bg-opacity:1;background-color:rgb(139 30 30 / var(--tw-bg-opacity, 1))}.bg-hunterGold{--tw-bg-opacity:1;background-color:rgb(224 162 32 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/5{background-color:rgb(255 255 255 / 0.05)}.bg-opacity-90{--tw-bg-opacity:0.9}.bg-hero-pattern{background-image:linear-gradient(to bottom, rgba(10,10,10,0.3), rgba(10,10,10,1)), url('https://images.unsplash.com/photo-1533237264841-8650eb1b2383?q=80&w=2066&auto=format&fit=crop')}.bg-cover{background-size:cover}.bg-fixed{background-attachment:fixed}.bg-center{background-position:center}.bg-no-repeat{background-repeat:no-repeat}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-10{padding-left:2.5rem;padding-right:2.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.text-center{text-align:center}.font-body{font-family:Manrope, sans-serif}.font-display{font-family:Anton, sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-6xl{font-size:3.75rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-light{font-weight:300}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-none{line-height:1}.leading-relaxed{line-height:1.625}.tracking-\[0\.3em\]{letter-spacing:0.3em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-black{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.text-deepBlack{--tw-text-opacity:1;color:rgb(10 10 10 / var(--tw-text-opacity, 1))}.text-desertBeige{--tw-text-opacity:1;color:rgb(214 199 161 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-steelGrey{--tw-text-opacity:1;color:rgb(166 166 166 / var(--tw-text-opacity, 1))}.text-tacRed{--tw-text-opacity:1;color:rgb(139 30 30 / var(--tw-text-opacity, 1))}.text-hunterGold{--tw-text-opacity:1;color:rgb(224 162 32 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-white\/10{color:rgb(255 255 255 / 0.1)}.text-white\/20{color:rgb(255 255 255 / 0.2)}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.outline-none{outline:2px solid transparent;outline-offset:2px}.backdrop-blur{--tw-backdrop-blur:blur(8px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.duration-300{transition-duration:300ms}.hover\:-translate-y-2:hover{--tw-translate-y:-0.5rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:scale-110:hover{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-hunterGold:hover{--tw-border-opacity:1;border-color:rgb(224 162 32 / var(--tw-border-opacity, 1))}.hover\:bg-red-700:hover{--tw-bg-opacity:1;background-color:rgb(185 28 28 / var(--tw-bg-opacity, 1))}.hover\:bg-hunterGold:hover{--tw-bg-opacity:1;background-color:rgb(224 162 32 / var(--tw-bg-opacity, 1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.hover\:text-black:hover{--tw-text-opacity:1;color:rgb(0 0 0 / var(--tw-text-opacity, 1))}.hover\:text-HunterGold:hover{--tw-text-opacity:1;color:rgb(224 162 32 / var(--tw-text-opacity, 1))}.focus\:border-black:focus{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity, 1))}.focus\:border-HunterGold:focus{--tw-border-opacity:1;border-color:rgb(224 162 32 / var(--tw-border-opacity, 1))}.group:hover .group-hover\:text-hunterGold{--tw-text-opacity:1;color:rgb(224 162 32 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:flex{display:flex}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.md\:flex-row{flex-direction:row}.md\:text-left{text-align:left}.md\:text-5xl{font-size:3rem;line-height:1}.md\:text-8xl{font-size:6rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style></head>
+
 <body class="crosshair-cursor antialiased font-body">
 
-    <canvas id="fireCanvas"></canvas>
 
-    <div class="relative-content">
-        <div id="langPopup" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center modal hidden-modal">
-            <div class="bg-deepBlack border-2 border-hunterGold p-8 max-w-md text-center">
-                <h2 class="font-display text-4xl text-white mb-6 tracking-wide">CHOOSE YOUR LANGUAGE</h2>
-                <div class="space-y-4">
-                    <button onclick="closeLang()" class="block w-full py-3 bg-milGreen hover:bg-hunterGold text-white font-bold uppercase tracking-wider transition duration-300">Français</button>
-                    <button onclick="closeLang()" class="block w-full py-3 bg-milGreen hover:bg-hunterGold text-white font-bold uppercase tracking-wider transition duration-300">English</button>
-                    <button onclick="closeLang()" class="block w-full py-3 bg-milGreen hover:bg-hunterGold text-white font-bold uppercase tracking-wider transition duration-300">Español</button>
-                </div>
+
+    <div id="langPopup" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center modal hidden-modal">
+
+        <div class="bg-deepBlack border-2 border-hunterGold p-8 max-w-md text-center">
+
+            <h2 class="font-display text-4xl text-white mb-6 tracking-wide">CHOOSE YOUR LANGUAGE</h2>
+
+            <div class="space-y-4">
+
+                <button onclick="closeLang()" class="block w-full py-3 bg-milGreen hover:bg-hunterGold text-white font-bold uppercase tracking-wider transition duration-300">Français</button>
+
+                <button onclick="closeLang()" class="block w-full py-3 bg-milGreen hover:bg-hunterGold text-white font-bold uppercase tracking-wider transition duration-300">English</button>
+
+                <button onclick="closeLang()" class="block w-full py-3 bg-milGreen hover:bg-hunterGold text-white font-bold uppercase tracking-wider transition duration-300">Español</button>
+
             </div>
+
         </div>
 
-        <nav class="fixed w-full z-40 bg-deepBlack/90 backdrop-blur border-b border-white/10">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <div class="text-2xl font-display text-white tracking-widest">TEXAS HUNTER RANCH</div>
-                <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wide text-desertBeige">
-                    <a href="#packages" class="hover:text-hunterGold transition">Packages</a>
-                    <a href="#concept" class="hover:text-hunterGold transition">The Concept</a>
-                    <a href="#about" class="hover:text-hunterGold transition">About</a>
-                    <a href="#book" class="bg-hunterGold text-black px-6 py-2 hover:bg-white transition">Book Now</a>
-                </div>
-            </div>
-        </nav>
-
-        <section class="relative h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
-            <div class="text-center px-4 max-w-5xl z-10 mt-20">
-                <p class="text-hunterGold font-bold tracking-[0.3em] mb-4 uppercase animate-pulse">Primitive Modern Hunt</p>
-                <h1 class="font-display text-6xl md:text-8xl text-white leading-none mb-6 uppercase">
-                    Become the hunter <br>Your Ancestors Would Respect.
-                </h1>
-                
-                <div class="flex flex-col md:flex-row justify-center gap-6 mt-10">
-                    <a href="#book" class="bg-hunterGold text-deepBlack font-display text-xl px-10 py-4 uppercase tracking-wider hover:bg-white hover:scale-105 transition transform duration-200">
-                        Book Your Experience
-                    </a>
-                    <a href="#packages" class="border-2 border-white text-white font-display text-xl px-10 py-4 uppercase tracking-wider hover:bg-white hover:text-black transition">
-                        View Packages
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="concept" class="py-24 bg-deepBlack border-b border-white/5">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="font-display text-4xl md:text-5xl text-white mb-6 uppercase">A New Breed of Hunting Experience</h2>
-                <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mt-12">
-                    <div class="p-6 border border-white/10 bg-white/5 hover:border-hunterGold transition duration-300">
-                        <div class="text-hunterGold text-4xl mb-4">⚔️</div>
-                        <h3 class="font-display text-2xl text-white mb-2">PRIMITIVE</h3>
-                        <p class="text-sm text-steelGrey">Bow, Spear, Raw Tracking.</p>
-                    </div>
-                    <div class="p-6 border border-white/10 bg-white/5 hover:border-hunterGold transition duration-300">
-                        <div class="text-hunterGold text-4xl mb-4">🎯</div>
-                        <h3 class="font-display text-2xl text-white mb-2">TACTICAL</h3>
-                        <p class="text-sm text-steelGrey">Modern Drills, Night Vision.</p>
-                    </div>
-                    <div class="p-6 border border-white/10 bg-white/5 hover:border-hunterGold transition duration-300">
-                        <div class="text-hunterGold text-4xl mb-4">🔥</div>
-                        <h3 class="font-display text-2xl text-white mb-2">IMMERSIVE</h3>
-                        <p class="text-sm text-steelGrey">Tribal Rites, Deep Nature.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="sticky-bar uppercase">
-            Limited slots for Spring 2026 – <a href="#book" class="underline">Secure your hunt now</a>
-        </div>
     </div>
 
-    <script>
-        const canvas = document.getElementById('fireCanvas');
-        const ctx = canvas.getContext('2d');
 
-        let particles = [];
-        const particleCount = 80; // Nombre de braises à l'écran
 
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+    <div id="exitPopup" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center modal hidden-modal">
 
-        window.addEventListener('resize', resize);
-        resize();
+        <div class="bg-deepBlack border-2 border-tacRed p-8 max-w-lg text-center relative">
 
-        class Ember {
-            constructor() {
-                this.init();
-            }
+            <button onclick="closeExit()" class="absolute top-2 right-4 text-white text-2xl">×</button>
 
-            init() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + Math.random() * 100;
-                this.size = Math.random() * 3 + 1;
-                this.speedY = Math.random() * 1.2 + 0.5; // Vitesse de montée
-                this.speedX = (Math.random() - 0.5) * 1; // Oscillation latérale
-                this.opacity = Math.random() * 0.6 + 0.4;
-                this.life = 0; // Temps écoulé
-                this.maxLife = Math.random() * 200 + 100; // Durée de vie avant disparition
-                
-                // Couleurs basées sur ta charte graphique (Or et Rouge Tactique)
-                const colors = ['#E0A220', '#8B1E1E', '#FF5733', '#FFA500'];
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-            }
+            <h2 class="font-display text-5xl text-hunterGold mb-2">WAIT, HUNTER</h2>
 
-            update() {
-                this.y -= this.speedY;
-                this.x += Math.sin(this.life * 0.05) * 0.5; // Mouvement de flottement sinusoïdal
-                this.life++;
-                this.opacity -= 0.003;
+            <p class="text-white text-lg mb-6">Don't leave empty-handed. Get <span class="text-tacRed font-bold">10% OFF</span> your first primitive experience.</p>
 
-                if (this.opacity <= 0 || this.y < -20) {
-                    this.init();
-                }
-            }
+            <input type="email" placeholder="Enter your email" class="w-full bg-gray-800 text-white p-3 mb-4 border border-gray-600 focus:border-hunterGold outline-none">
 
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.globalAlpha = this.opacity;
-                
-                // Effet de halo lumineux
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = this.color;
-                
-                ctx.fill();
-            }
-        }
+            <button class="w-full py-3 bg-tacRed hover:bg-red-700 text-white font-display uppercase text-xl tracking-wider">CLAIM DISCOUNT</button>
 
-        function initParticles() {
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Ember());
-            }
-        }
+        </div>
 
-        function animate() {
-            // Un fond très légèrement noir transparent pour l'effet de traînée (optionnel)
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    </div>
+
+
+
+    <nav class="fixed w-full z-40 bg-deepBlack/90 backdrop-blur border-b border-white/10">
+
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+
+            <div class="text-2xl font-display text-white tracking-widest">TEXAS hunter RANCH</div>
+
+            <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wide text-desertBeige">
+
+                <a href="#packages" class="hover:text-hunterGold transition">Packages</a>
+
+                <a href="#concept" class="hover:text-hunterGold transition">The Concept</a>
+
+                <a href="#about" class="hover:text-hunterGold transition">About</a>
+
+                <a href="#book" class="bg-hunterGold text-black px-6 py-2 hover:bg-white transition">Book Now</a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <section class="relative h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed">
+
+        <div class="text-center px-4 max-w-5xl z-10 mt-20">
+
+            <p class="text-hunterGold font-bold tracking-[0.3em] mb-4 uppercase animate-pulse">Primitive Modern Hunt</p>
+
+            <h1 class="font-display text-6xl md:text-8xl text-white leading-none mb-6 uppercase">
+
+                Become the hunter <br>Your Ancestors Would Respect.
+
+            </h1>
+
             
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
-        }
 
-        // Gestionnaire de Popups
-        function closeLang() {
-            document.getElementById('langPopup').classList.add('hidden-modal');
-        }
+            <div class="flex flex-col md:flex-row justify-center gap-6 mt-10">
 
-        // Lancement
-        window.onload = () => {
-            initParticles();
-            animate();
-            // Affiche le popup de langue après 1 sec
-            setTimeout(() => {
-                document.getElementById('langPopup').classList.remove('hidden-modal');
-            }, 1000);
-        };
-    </script>
-</body>
-</html>
+                <a href="#book" class="bg-hunterGold text-deepBlack font-display text-xl px-10 py-4 uppercase tracking-wider hover:bg-white hover:scale-105 transition transform duration-200">
+
+                    Book Your Experience
+
+                </a>
+
+                <a href="#packages" class="border-2 border-white text-white font-display text-xl px-10 py-4 uppercase tracking-wider hover:bg-white hover:text-black transition">
+
+                    View Packages
+
+                </a>
+
+            </div>
+
+
+
+            <div class="mt-12 flex justify-center gap-6 text-sm text-steelGrey font-bold uppercase tracking-wider">
+
+                <span>★ Rated 5/5 by Adventurers</span>
+
+                <span>★ Texas Certified Outdoor Experience</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="concept" class="py-24 bg-deepBlack border-b border-white/5">
+
+        <div class="container mx-auto px-6 text-center">
+
+            <h2 class="font-display text-4xl md:text-5xl text-white mb-6 uppercase">A New Breed of Hunting Experience</h2>
+
+            <p class="max-w-2xl mx-auto text-lg text-steelGrey mb-12">
+
+                A fusion of primitive techniques, modern weapons, tribal adrenaline, and survival challenges. 
+
+                <span class="text-white">You don't just hunt. You become a hunter.</span>
+
+            </p>
+
+            
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+
+                <div class="p-6 border border-white/10 bg-white/5 hover:border-hunterGold transition duration-300">
+
+                    <div class="text-hunterGold text-4xl mb-4">⚔️</div>
+
+                    <h3 class="font-display text-2xl text-white mb-2">PRIMITIVE</h3>
+
+                    <p class="text-sm text-steelGrey">Bow, Spear, Raw Tracking.</p>
+
+                </div>
+
+                <div class="p-6 border border-white/10 bg-white/5 hover:border-hunterGold transition duration-300">
+
+                    <div class="text-hunterGold text-4xl mb-4">🎯</div>
+
+                    <h3 class="font-display text-2xl text-white mb-2">TACTICAL</h3>
+
+                    <p class="text-sm text-steelGrey">Modern Drills, Night Vision.</p>
+
+                </div>
+
+                <div class="p-6 border border-white/10 bg-white/5 hover:border-hunterGold transition duration-300">
+
+                    <div class="text-hunterGold text-4xl mb-4">🔥</div>
+
+                    <h3 class="font-display text-2xl text-white mb-2">IMMERSIVE</h3>
+
+                    <p class="text-sm text-steelGrey">Tribal Rites, Deep Nature.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="packages" class="py-24 bg-stone-900">
+
+        <div class="container mx-auto px-6">
+
+            <div class="text-center mb-16">
+
+                <h2 class="font-display text-5xl text-white uppercase">Choose Your Path</h2>
+
+                <div class="w-24 h-1 bg-hunterGold mx-auto mt-4"></div>
+
+            </div>
+
+
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                
+
+                <div class="bg-deepBlack border-2 border-hunterGold p-6 flex flex-col gold-glow transition transform hover:-translate-y-2">
+
+                    <div class="bg-hunterGold text-black text-xs font-bold px-2 py-1 absolute top-4 right-4 uppercase">Most Popular</div>
+
+                    <h3 class="font-display text-3xl text-white mb-2 uppercase">Primitive Hunt</h3>
+
+                    <p class="text-desertBeige text-sm mb-4 h-10">Spear throw, primitive archery &amp; moving targets.</p>
+
+                    <div class="text-4xl font-display text-white mb-6">$149<span class="text-lg text-steelGrey font-body">- $299</span></div>
+
+                    <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
+
+                        <li class="flex items-center">✓ Pickup Shooting</li>
+
+                        <li class="flex items-center">✓ Spear Throwing</li>
+
+                        <li class="flex items-center">✓ Viking Tracking</li>
+
+                        <li class="flex items-center text-white">✓ Pro Photos Included</li>
+
+                    </ul>
+
+                    <a href="#book" class="block text-center w-full py-3 bg-hunterGold text-black font-display uppercase tracking-wider hover:bg-white transition">Book Now</a>
+
+                </div>
+
+
+
+                <div class="bg-deepBlack border border-white/10 p-6 flex flex-col hover:border-hunterGold transition transform hover:-translate-y-2">
+
+                    <h3 class="font-display text-3xl text-white mb-2 uppercase">Night Excursion</h3>
+
+                    <p class="text-desertBeige text-sm mb-4 h-10">Vision nocturne, hog hunt, extreme adrenaline.</p>
+
+                    <div class="text-4xl font-display text-white mb-6">$399<span class="text-lg text-steelGrey font-body">- $599</span></div>
+
+                    <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
+
+                        <li class="flex items-center">✓ Night Vision Gear</li>
+
+                        <li class="flex items-center">✓ Hog Hunting</li>
+
+                        <li class="flex items-center">✓ Thermal Optics</li>
+
+                    </ul>
+
+                    <a href="#book" class="block text-center w-full py-3 bg-milGreen text-white font-display uppercase tracking-wider hover:bg-hunterGold hover:text-black transition">Book Experience</a>
+
+                </div>
+
+
+
+                <div class="bg-deepBlack border border-white/10 p-6 flex flex-col hover:border-hunterGold transition transform hover:-translate-y-2">
+
+                    <h3 class="font-display text-3xl text-white mb-2 uppercase">Tactical Range</h3>
+
+                    <p class="text-desertBeige text-sm mb-4 h-10">Moving targets, drills &amp; tactical coaching.</p>
+
+                    <div class="text-4xl font-display text-white mb-6">$129<span class="text-lg text-steelGrey font-body">- $249</span></div>
+
+                    <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
+
+                        <li class="flex items-center">✓ Moving Targets</li>
+
+                        <li class="flex items-center">✓ Tactical Drills</li>
+
+                        <li class="flex items-center">✓ Pro Coaching</li>
+
+                    </ul>
+
+                    <a href="#book" class="block text-center w-full py-3 bg-milGreen text-white font-display uppercase tracking-wider hover:bg-hunterGold hover:text-black transition">Start Shooting</a>
+
+                </div>
+
+
+
+                <div class="bg-deepBlack border border-white/10 p-6 flex flex-col hover:border-hunterGold transition transform hover:-translate-y-2">
+
+                    <h3 class="font-display text-3xl text-white mb-2 uppercase">Survival</h3>
+
+                    <p class="text-desertBeige text-sm mb-4 h-10">The ultimate rite of passage.</p>
+
+                    <div class="text-4xl font-display text-white mb-6">$299<span class="text-lg text-steelGrey font-body">- $499</span></div>
+
+                    <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
+
+                        <li class="flex items-center">✓ Shelter Building</li>
+
+                        <li class="flex items-center">✓ Fire Starting</li>
+
+                        <li class="flex items-center">✓ Raw Survival</li>
+
+                    </ul>
+
+                    <a href="#book" class="block text-center w-full py-3 bg-milGreen text-white font-display uppercase tracking-wider hover:bg-hunterGold hover:text-black transition">Join Course</a>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section class="py-20 bg-milGreen/20 border-y border-white/5">
+
+        <div class="container mx-auto px-6 text-center">
+
+            <h3 class="font-display text-6xl text-white/10 absolute left-0 right-0 -mt-10 select-none">TESTIMONIALS</h3>
+
+            <div class="relative z-10">
+
+                <p class="text-2xl text-white italic font-light mb-6">"I came looking for a hunt, I left with a brotherhood. The most raw experience of my life."</p>
+
+                <div class="flex justify-center items-center gap-4">
+
+                    <div class="text-hunterGold text-xl">★★★★★</div>
+
+                    <p class="font-bold text-white uppercase tracking-wider">— Mark D., Austin TX</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <section id="about" class="py-24 bg-deepBlack">
+
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+
+            <div>
+
+                <h2 class="font-display text-4xl text-white mb-6 uppercase">Not Just a Ranch. <br><span class="text-hunterGold">A Forge for Men.</span></h2>
+
+                <p class="text-steelGrey mb-6 leading-relaxed">
+
+                    Most ranges are static. Most hunts are automated. We bring back the <strong class="text-white">Primal</strong>. 
+
+                    We fuse ancient tribal instincts with modern tactical efficiency. 
+
+                    Located in the heart of the rugged Texas landscape, we offer a rite of passage, not just a service.
+
+                </p>
+
+                <ul class="space-y-4 mb-8">
+
+                    <li class="flex items-center text-desertBeige"><span class="text-hunterGold mr-3">➤</span> 100% Authentic Texas Wilderness</li>
+
+                    <li class="flex items-center text-desertBeige"><span class="text-hunterGold mr-3">➤</span> Expert Military &amp; Survival Guides</li>
+
+                    <li class="flex items-center text-desertBeige"><span class="text-hunterGold mr-3">➤</span> Equipment Provided (Bows, Tactical, Optics)</li>
+
+                </ul>
+
+            </div>
+
+            <div class="h-96 bg-gray-800 border border-white/10 relative overflow-hidden group">
+
+                 <div class="absolute inset-0 flex items-center justify-center text-white/20 font-display text-4xl uppercase group-hover:text-hunterGold transition">
+
+                     [Video Reel Placeholder]
+
+         
