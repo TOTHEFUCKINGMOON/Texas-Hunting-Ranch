@@ -32,9 +32,9 @@
     </script>
 
     <style>
-        body { background-color: #050505; color: #D6C7A1; }
+        body { background-color: #000000; color: #D6C7A1; }
         
-        /* BACKGROUND RAYURES PRÉCISES (SCANLINES) */
+        /* BACKGROUND RAYURES PRÉCISES (UNIQUEMENT HERO) */
         .bg-scanlines {
             background-color: #050505;
             background-image: repeating-linear-gradient(
@@ -112,103 +112,66 @@
         }
     </style>
 </head>
-<body class="antialiased font-body bg-deepBlack">
+<body class="antialiased font-body bg-black">
 
     <div id="langPopup" class="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center modal hidden-modal">
-        <div class="bg-deepBlack border-2 border-warriorGold p-8 max-w-md text-center shadow-[0_0_50px_rgba(224,162,32,0.3)]">
+        <div class="bg-black border-2 border-warriorGold p-8 max-w-md text-center shadow-[0_0_50px_rgba(224,162,32,0.3)]">
             <h2 class="font-display text-4xl text-white mb-2 tracking-wide">WELCOME WARRIOR</h2>
             <p class="text-steelGrey mb-8 text-sm uppercase tracking-widest">Choose your language</p>
-            
             <div class="space-y-4">
-                <button onclick="setLang('en')" class="block w-full py-4 border border-white/10 hover:bg-warriorGold hover:text-black hover:border-warriorGold text-white font-bold uppercase tracking-wider transition duration-200">
-                    🇺🇸 English
-                </button>
-                <button onclick="setLang('fr')" class="block w-full py-4 border border-white/10 hover:bg-warriorGold hover:text-black hover:border-warriorGold text-white font-bold uppercase tracking-wider transition duration-200">
-                    🇫🇷 Français
-                </button>
-                <button onclick="setLang('es')" class="block w-full py-4 border border-white/10 hover:bg-warriorGold hover:text-black hover:border-warriorGold text-white font-bold uppercase tracking-wider transition duration-200">
-                    🇪🇸 Español
-                </button>
+                <button onclick="setLang('en')" class="block w-full py-4 border border-white/10 hover:bg-warriorGold hover:text-black text-white font-bold uppercase tracking-wider transition">🇺🇸 English</button>
+                <button onclick="setLang('fr')" class="block w-full py-4 border border-white/10 hover:bg-warriorGold hover:text-black text-white font-bold uppercase tracking-wider transition">🇫🇷 Français</button>
+                <button onclick="setLang('es')" class="block w-full py-4 border border-white/10 hover:bg-warriorGold hover:text-black text-white font-bold uppercase tracking-wider transition">🇪🇸 Español</button>
             </div>
         </div>
     </div>
 
-    <nav class="fixed w-full z-50 bg-deepBlack/95 backdrop-blur border-b border-white/10">
+    <nav class="fixed w-full z-50 bg-black/95 backdrop-blur border-b border-white/10">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-display text-white tracking-widest z-50">
-                PRIMITIVE TEXAS RANCH
-            </div>
-
+            <div class="text-2xl font-display text-white tracking-widest z-50">PRIMITIVE TEXAS RANCH</div>
             <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wide text-desertBeige items-center">
                 <a href="#packages" class="hover:text-warriorGold transition" data-i18n="nav_packages">Packages</a>
                 <a href="#concept" class="hover:text-warriorGold transition" data-i18n="nav_concept">The Concept</a>
                 <a href="#book" class="bg-warriorGold text-black px-6 py-2 hover:bg-white transition" data-i18n="nav_book">Book Now</a>
-                
                 <div class="flex space-x-2 ml-4">
-                    <button onclick="setLang('en')" class="text-xl opacity-50 hover:opacity-100 transition current-lang" data-lang-btn="en" title="English">🇺🇸</button>
-                    <button onclick="setLang('fr')" class="text-xl opacity-50 hover:opacity-100 transition current-lang" data-lang-btn="fr" title="Français">🇫🇷</button>
-                    <button onclick="setLang('es')" class="text-xl opacity-50 hover:opacity-100 transition current-lang" data-lang-btn="es" title="Español">🇪🇸</button>
+                    <button onclick="setLang('en')" class="text-xl current-lang" data-lang-btn="en">🇺🇸</button>
+                    <button onclick="setLang('fr')" class="text-xl current-lang" data-lang-btn="fr">🇫🇷</button>
+                    <button onclick="setLang('es')" class="text-xl current-lang" data-lang-btn="es">🇪🇸</button>
                 </div>
             </div>
-
-            <button id="burgerBtn" class="md:hidden z-50 text-white focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
+            <button id="burgerBtn" class="md:hidden z-50 text-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
         </div>
     </nav>
 
-    <div id="mobileMenu" class="fixed inset-0 bg-deepBlack z-40 flex flex-col items-center justify-center space-y-8 menu-closed md:hidden border-l border-warriorGold/20">
-        <a href="#packages" onclick="toggleMenu()" class="font-display text-4xl text-white hover:text-warriorGold uppercase" data-i18n="nav_packages">Packages</a>
-        <a href="#concept" onclick="toggleMenu()" class="font-display text-4xl text-white hover:text-warriorGold uppercase" data-i18n="nav_concept">Concept</a>
+    <div id="mobileMenu" class="fixed inset-0 bg-black z-40 flex flex-col items-center justify-center space-y-8 menu-closed md:hidden">
+        <a href="#packages" onclick="toggleMenu()" class="font-display text-4xl text-white uppercase" data-i18n="nav_packages">Packages</a>
+        <a href="#concept" onclick="toggleMenu()" class="font-display text-4xl text-white uppercase" data-i18n="nav_concept">Concept</a>
         <a href="#book" onclick="toggleMenu()" class="font-display text-4xl text-warriorGold border-b-2 border-warriorGold pb-1" data-i18n="nav_book">Book Now</a>
-
         <div class="mt-8 flex gap-6">
-            <button onclick="setLang('en'); toggleMenu()" class="text-4xl grayscale hover:grayscale-0 transition" data-lang-btn-mobile="en">🇺🇸</button>
-            <button onclick="setLang('fr'); toggleMenu()" class="text-4xl grayscale hover:grayscale-0 transition" data-lang-btn-mobile="fr">🇫🇷</button>
-            <button onclick="setLang('es'); toggleMenu()" class="text-4xl grayscale hover:grayscale-0 transition" data-lang-btn-mobile="es">🇪🇸</button>
+            <button onclick="setLang('en'); toggleMenu()" class="text-4xl" data-lang-btn-mobile="en">🇺🇸</button>
+            <button onclick="setLang('fr'); toggleMenu()" class="text-4xl" data-lang-btn-mobile="fr">🇫🇷</button>
+            <button onclick="setLang('es'); toggleMenu()" class="text-4xl" data-lang-btn-mobile="es">🇪🇸</button>
         </div>
     </div>
 
     <section class="relative min-h-screen flex items-center justify-center bg-scanlines pt-32 md:pt-0 fire-embers">
-        <div class="absolute inset-0 bg-gradient-to-t from-deepBlack via-transparent to-transparent pointer-events-none"></div>
-
         <div class="text-center px-4 max-w-5xl z-10">
-            <p class="text-warriorGold font-bold tracking-[0.2em] md:tracking-[0.3em] mb-6 uppercase animate-pulse text-sm md:text-base" data-i18n="hero_subtitle">
-                Primitive Modern Hunt
-            </p>
-            
-            <h1 class="font-display text-5xl md:text-8xl text-white leading-none mb-8 uppercase drop-shadow-xl" data-i18n="hero_title">
-                Become the Warrior <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-steelGrey">Your Ancestors</span> <br>
-                Would Respect.
-            </h1>
-            
-            <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6 mt-8">
-                <a href="#book" class="bg-warriorGold text-deepBlack font-display text-lg md:text-xl px-8 py-4 uppercase tracking-wider 
-                    border-2 border-warriorGold glow-on-hover-btn-gold 
-                    hover:bg-white hover:text-deepBlack hover:scale-105 transition transform duration-200" data-i18n="hero_cta_book">
-                    Book Your Experience
-                </a>
-                <a href="#packages" class="border-2 border-white text-white font-display text-lg md:text-xl px-8 py-4 uppercase tracking-wider 
-                    border-2 border-white glow-on-hover-btn-white 
-                    hover:bg-white hover:text-black transition" data-i18n="hero_cta_view">
-                    View Packages
-                </a>
+            <p class="text-warriorGold font-bold tracking-[0.2em] mb-6 uppercase animate-pulse text-sm md:text-base" data-i18n="hero_subtitle">Primitive Modern Hunt</p>
+            <h1 class="font-display text-5xl md:text-8xl text-white leading-none mb-8 uppercase" data-i18n="hero_title">Become the Man <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-steelGrey">Your Ancestors</span> <br>Would Respect.</h1>
+            <div class="flex flex-col md:flex-row justify-center gap-4 mt-8">
+                <a href="#book" class="bg-warriorGold text-black font-display text-lg px-8 py-4 uppercase border-2 border-warriorGold glow-on-hover-btn-gold hover:bg-white transition" data-i18n="hero_cta_book">Book Your Experience</a>
+                <a href="#packages" class="border-2 border-white text-white font-display text-lg px-8 py-4 uppercase glow-on-hover-btn-white hover:bg-white hover:text-black transition" data-i18n="hero_cta_view">View Packages</a>
             </div>
         </div>
     </section>
 
-    <section id="concept" class="py-24 bg-deepBlack border-b border-white/5 fire-embers bg-scanlines">
+    <section id="concept" class="py-24 bg-black fire-embers">
         <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="font-display text-4xl md:text-5xl text-white mb-6 uppercase" data-i18n="concept_title">A New Breed of Hunting Experience</h2>
             <p class="max-w-2xl mx-auto text-lg text-steelGrey mb-12">
-                <span data-i18n="concept_desc">A fusion of primitive techniques, modern weapons, tribal adrenaline, and survival challenges.</span>
-                <br>
+                <span data-i18n="concept_desc">A fusion of primitive techniques, modern weapons, tribal adrenaline, and survival challenges.</span><br>
                 <span class="text-white" data-i18n="concept_punchline">You don't just hunt. You become a warrior.</span>
             </p>
-            
             <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
                 <div class="p-6 border border-white/10 bg-white/5 hover:border-warriorGold transition duration-300">
                     <div class="text-warriorGold text-4xl mb-4">⚔️</div>
@@ -229,67 +192,64 @@
         </div>
     </section>
 
-    <section id="packages" class="py-24 bg-[#111]">
+    <section id="packages" class="py-24 bg-[#0a0a0a]">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="font-display text-5xl text-white uppercase" data-i18n="packages_title">Choose Your Path</h2>
                 <div class="w-24 h-1 bg-warriorGold mx-auto mt-4"></div>
             </div>
-
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="relative bg-deepBlack border-2 border-warriorGold p-6 flex flex-col glow-on-hover transition duration-300">
-                    <div class="bg-warriorGold text-black text-xs font-bold px-2 py-1 absolute top-4 right-4 uppercase" data-i18n="badge_popular">Most Popular</div>
+                <div class="relative bg-black border-2 border-warriorGold p-6 flex flex-col glow-on-hover transition">
+                    <div class="bg-warriorGold text-black text-xs font-bold px-2 py-1 absolute top-4 right-4" data-i18n="badge_popular">Most Popular</div>
                     <h3 class="font-display text-3xl text-white mb-2 uppercase" data-i18n="pkg_1_title">Primitive Hunt</h3>
                     <div class="text-4xl font-display text-white mb-6">$149<span class="text-lg text-steelGrey font-body">- $299</span></div>
                     <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
-                        <li class="flex items-center" data-i18n="pkg_1_feat1">✓ Pickup Shooting</li>
-                        <li class="flex items-center" data-i18n="pkg_1_feat2">✓ Spear Throwing</li>
-                        <li class="flex items-center" data-i18n="pkg_1_feat3">✓ Viking Tracking</li>
-                        <li class="flex items-center text-white" data-i18n="pkg_1_feat4">✓ Pro Photos Included</li>
+                        <li data-i18n="pkg_1_feat1">✓ Pickup Shooting</li>
+                        <li data-i18n="pkg_1_feat2">✓ Spear Throwing</li>
+                        <li data-i18n="pkg_1_feat3">✓ Viking Tracking</li>
+                        <li class="text-white" data-i18n="pkg_1_feat4">✓ Pro Photos Included</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 bg-warriorGold text-black font-display uppercase tracking-wider hover:bg-white transition" data-i18n="btn_book">Book Now</a>
+                    <a href="#book" class="block text-center w-full py-3 bg-warriorGold text-black font-display uppercase hover:bg-white transition" data-i18n="btn_book">Book Now</a>
                 </div>
-                <div class="relative bg-deepBlack border border-white/10 p-6 flex flex-col glow-on-hover transition duration-300">
+                <div class="relative bg-black border border-white/10 p-6 flex flex-col glow-on-hover transition">
                     <h3 class="font-display text-3xl text-white mb-2 uppercase" data-i18n="pkg_2_title">Night Excursion</h3>
                     <div class="text-4xl font-display text-white mb-6">$399<span class="text-lg text-steelGrey font-body">- $599</span></div>
                     <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
-                        <li class="flex items-center" data-i18n="pkg_2_feat1">✓ Night Vision Gear</li>
-                        <li class="flex items-center" data-i18n="pkg_2_feat2">✓ Hog Hunting</li>
-                        <li class="flex items-center" data-i18n="pkg_2_feat3">✓ Thermal Optics</li>
+                        <li data-i18n="pkg_2_feat1">✓ Night Vision Gear</li>
+                        <li data-i18n="pkg_2_feat2">✓ Hog Hunting</li>
+                        <li data-i18n="pkg_2_feat3">✓ Thermal Optics</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase tracking-wider hover:bg-warriorGold hover:text-black transition" data-i18n="btn_book_exp">Book Experience</a>
+                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase hover:bg-warriorGold hover:text-black transition" data-i18n="btn_book_exp">Book Experience</a>
                 </div>
-                <div class="relative bg-deepBlack border border-white/10 p-6 flex flex-col glow-on-hover transition duration-300">
+                <div class="relative bg-black border border-white/10 p-6 flex flex-col glow-on-hover transition">
                     <h3 class="font-display text-3xl text-white mb-2 uppercase" data-i18n="pkg_3_title">Tactical Range</h3>
                     <div class="text-4xl font-display text-white mb-6">$129<span class="text-lg text-steelGrey font-body">- $249</span></div>
                     <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
-                        <li class="flex items-center" data-i18n="pkg_3_feat1">✓ Moving Targets</li>
-                        <li class="flex items-center" data-i18n="pkg_3_feat2">✓ Tactical Drills</li>
-                        <li class="flex items-center" data-i18n="pkg_3_feat3">✓ Pro Coaching</li>
+                        <li data-i18n="pkg_3_feat1">✓ Moving Targets</li>
+                        <li data-i18n="pkg_3_feat2">✓ Tactical Drills</li>
+                        <li data-i18n="pkg_3_feat3">✓ Pro Coaching</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase tracking-wider hover:bg-warriorGold hover:text-black transition" data-i18n="btn_start_shoot">Start Shooting</a>
+                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase hover:bg-warriorGold hover:text-black transition" data-i18n="btn_start_shoot">Start Shooting</a>
                 </div>
-                <div class="relative bg-deepBlack border border-white/10 p-6 flex flex-col glow-on-hover transition duration-300">
+                <div class="relative bg-black border border-white/10 p-6 flex flex-col glow-on-hover transition">
                     <h3 class="font-display text-3xl text-white mb-2 uppercase" data-i18n="pkg_4_title">Survival</h3>
                     <div class="text-4xl font-display text-white mb-6">$299<span class="text-lg text-steelGrey font-body">- $499</span></div>
                     <ul class="text-steelGrey text-sm space-y-3 mb-8 flex-grow">
-                        <li class="flex items-center" data-i18n="pkg_4_feat1">✓ Shelter Building</li>
-                        <li class="flex items-center" data-i18n="pkg_4_feat2">✓ Fire Starting</li>
-                        <li class="flex items-center" data-i18n="pkg_4_feat3">✓ Raw Survival</li>
+                        <li data-i18n="pkg_4_feat1">✓ Shelter Building</li>
+                        <li data-i18n="pkg_4_feat2">✓ Fire Starting</li>
+                        <li data-i18n="pkg_4_feat3">✓ Raw Survival</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase tracking-wider hover:bg-warriorGold hover:text-black transition" data-i18n="btn_join_course">Join Course</a>
+                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase hover:bg-warriorGold hover:text-black transition" data-i18n="btn_join_course">Join Course</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-24 bg-deepBlack fire-embers bg-scanlines border-y border-white/5">
+    <section class="py-24 bg-black fire-embers border-y border-white/5">
         <div class="container mx-auto px-6 text-center relative z-10">
             <h3 class="font-display text-6xl md:text-8xl text-white/5 absolute left-0 right-0 -mt-10 md:-mt-16 select-none" data-i18n="testimonials_bg">TESTIMONIALS</h3>
             <div class="relative z-10 pt-10">
-                <p class="text-2xl md:text-4xl text-white italic font-light mb-8 max-w-4xl mx-auto leading-tight" data-i18n="testimonial_text">
-                    "I came looking for a hunt, I left with a brotherhood. The most raw experience of my life."
-                </p>
+                <p class="text-2xl md:text-4xl text-white italic font-light mb-8 max-w-4xl mx-auto" data-i18n="testimonial_text">"I came looking for a hunt, I left with a brotherhood. The most raw experience of my life."</p>
                 <div class="flex flex-col items-center gap-2">
                     <div class="text-warriorGold text-2xl">★★★★★</div>
                     <p class="font-bold text-white uppercase tracking-[0.2em]">— Mark D., Austin TX</p>
@@ -299,46 +259,35 @@
     </section>
 
     <section id="book" class="py-24 bg-white text-black">
-        <div class="container mx-auto px-6 max-w-2xl">
-            <div class="text-center mb-10">
-                <h2 class="font-display text-5xl mb-2 uppercase" data-i18n="book_title">Secure Your Spot</h2>
-                <p class="text-gray-600" data-i18n="book_subtitle">Less than 20 seconds to book. Pay on arrival options available.</p>
-            </div>
-
+        <div class="container mx-auto px-6 max-w-2xl text-center">
+            <h2 class="font-display text-5xl mb-2 uppercase" data-i18n="book_title">Secure Your Spot</h2>
+            <p class="text-gray-600 mb-10" data-i18n="book_subtitle">Less than 20 seconds to book. Pay on arrival options available.</p>
             <form class="space-y-4">
                 <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" placeholder="Name" class="w-full bg-gray-100 p-4 border-2 border-transparent focus:border-black outline-none font-bold">
-                    <input type="tel" placeholder="WhatsApp / Phone" class="w-full bg-gray-100 p-4 border-2 border-transparent focus:border-black outline-none font-bold">
+                    <input type="text" placeholder="Name" class="w-full bg-gray-100 p-4 font-bold outline-none">
+                    <input type="tel" placeholder="WhatsApp / Phone" class="w-full bg-gray-100 p-4 font-bold outline-none">
                 </div>
-                
-                <select class="w-full bg-gray-100 p-4 border-2 border-transparent focus:border-black outline-none font-bold">
+                <select class="w-full bg-gray-100 p-4 font-bold outline-none">
                     <option data-i18n="select_package_default">Select Package...</option>
                     <option value="primitive" data-i18n="select_primitive">Primitive Hunt Experience ($149+)</option>
                     <option value="night" data-i18n="select_night">Night Hunting Excursion ($399+)</option>
                     <option value="tactical" data-i18n="select_tactical">Tactical Shooting Range ($129+)</option>
                     <option value="survival" data-i18n="select_survival">Survival Training ($299+)</option>
                 </select>
-
                 <div class="grid md:grid-cols-2 gap-4">
-                    <input type="date" class="w-full bg-gray-100 p-4 border-2 border-transparent focus:border-black outline-none font-bold">
-                    <input type="number" placeholder="Participants" class="w-full bg-gray-100 p-4 border-2 border-transparent focus:border-black outline-none font-bold">
+                    <input type="date" class="w-full bg-gray-100 p-4 font-bold outline-none">
+                    <input type="number" placeholder="Participants" class="w-full bg-gray-100 p-4 font-bold outline-none">
                 </div>
-
-                <button type="submit" class="w-full py-5 bg-black text-white font-display text-2xl uppercase tracking-widest hover:bg-warriorGold hover:text-black transition duration-300" data-i18n="btn_confirm">
-                    CONFIRM BOOKING
-                </button>
+                <button type="submit" class="w-full py-5 bg-black text-white font-display text-2xl uppercase hover:bg-warriorGold hover:text-black transition duration-300" data-i18n="btn_confirm">CONFIRM BOOKING</button>
             </form>
         </div>
     </section>
 
-    <footer class="bg-deepBlack border-t border-white/10 py-12 fire-embers bg-scanlines">
+    <footer class="bg-black py-12 fire-embers border-t border-white/10">
         <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8 relative z-10">
             <div class="col-span-2 text-center md:text-left">
                 <h4 class="font-display text-3xl text-white mb-4">PRIMITIVE TEXAS RANCH</h4>
-                <p class="text-steelGrey text-sm max-w-sm mx-auto md:mx-0" data-i18n="footer_desc">
-                    The ultimate fusion of primitive instinct and modern warfare. 
-                    Forging warriors in the Texas heat.
-                </p>
+                <p class="text-steelGrey text-sm max-w-sm mx-auto md:mx-0" data-i18n="footer_desc">The ultimate fusion of primitive instinct and modern warfare. Forging warriors in the Texas heat.</p>
             </div>
             <div class="text-center md:text-left">
                 <h5 class="text-white font-bold uppercase mb-4" data-i18n="footer_quicklinks">Quick Links</h5>
@@ -349,21 +298,14 @@
             </div>
             <div class="text-center md:text-left">
                 <h5 class="text-white font-bold uppercase mb-4">Contact</h5>
-                <ul class="text-steelGrey text-sm space-y-2">
-                    <li>contact@warriorranch.com</li>
-                    <li>+1 (555) 000-0000</li>
-                </ul>
+                <p class="text-steelGrey text-sm">contact@warriorranch.com<br>+1 (555) 000-0000</p>
             </div>
-        </div>
-        <div class="text-center text-white/20 text-xs mt-12 relative z-10">
-            &copy; 2026 Primitive Modern Hunt. All Rights Reserved.
         </div>
     </footer>
 
     <a href="https://wa.me/5216122202021" target="_blank" class="whatsapp-float hover:scale-110 transition">
         <span>💬</span> <span data-i18n="whatsapp_text">Chat with a Hunter Guide</span>
     </a>
-
     <div class="sticky-bar">
         <span data-i18n="sticky_text">🔥 12 SPOTS REMAINING THIS MONTH — </span> <a href="#book" class="underline font-bold text-warriorGold" data-i18n="sticky_btn">BOOK NOW</a>
     </div>
@@ -447,8 +389,6 @@
             }
         };
 
-        let currentLang = 'en';
-
         window.onload = function() {
             if (!localStorage.getItem('userLang')) {
                 document.getElementById('langPopup').classList.remove('hidden-modal');
@@ -459,79 +399,41 @@
 
         function setLang(lang, initialLoad = false) {
             if (translations[lang]) {
-                document.querySelectorAll('[data-i18n]').forEach(element => {
-                    const key = element.getAttribute('data-i18n');
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
                     if (translations[lang][key]) {
-                        if (key === 'hero_title') {
-                            element.innerHTML = translations[lang][key];
-                        } else {
-                            element.textContent = translations[lang][key];
-                        }
+                        if (key === 'hero_title') el.innerHTML = translations[lang][key];
+                        else el.textContent = translations[lang][key];
                     }
                 });
-
                 updateSelectOptions(lang);
-
-                // Update Flag Buttons State
                 document.querySelectorAll('.current-lang').forEach(btn => {
-                    btn.classList.add('opacity-50');
-                    if (btn.getAttribute('data-lang-btn') === lang) {
-                        btn.classList.remove('opacity-50');
-                        btn.classList.add('opacity-100');
-                    }
+                    btn.style.opacity = btn.getAttribute('data-lang-btn') === lang ? "1" : "0.4";
                 });
-                
-                document.querySelectorAll('[data-lang-btn-mobile]').forEach(btn => {
-                    btn.classList.add('grayscale');
-                    if (btn.getAttribute('data-lang-btn-mobile') === lang) {
-                        btn.classList.remove('grayscale');
-                    }
-                });
-
                 if (!initialLoad) {
                     localStorage.setItem('userLang', lang);
                     document.getElementById('langPopup').classList.add('hidden-modal');
                 }
-                currentLang = lang;
             }
         }
 
         function updateSelectOptions(lang) {
-            const selectElement = document.querySelector('select');
-            if (selectElement) {
-                const options = selectElement.options;
-                for (let i = 0; i < options.length; i++) {
-                    const key = options[i].getAttribute('data-i18n');
-                    if (key && translations[lang][key]) {
-                        options[i].textContent = translations[lang][key];
-                    }
-                }
+            const select = document.querySelector('select');
+            if (select) {
+                Array.from(select.options).forEach(opt => {
+                    const key = opt.getAttribute('data-i18n');
+                    if (key && translations[lang][key]) opt.textContent = translations[lang][key];
+                });
             }
         }
 
         const burgerBtn = document.getElementById('burgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-
         burgerBtn.addEventListener('click', () => toggleMenu());
-
         function toggleMenu() {
-            if (mobileMenu.classList.contains('menu-closed')) {
-                mobileMenu.classList.remove('menu-closed');
-                mobileMenu.classList.add('menu-open');
-            } else {
-                mobileMenu.classList.add('menu-closed');
-                mobileMenu.classList.remove('menu-open');
-            }
+            mobileMenu.classList.toggle('menu-closed');
+            mobileMenu.classList.toggle('menu-open');
         }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
 </html>
