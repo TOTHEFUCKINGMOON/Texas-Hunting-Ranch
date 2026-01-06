@@ -89,8 +89,6 @@
             border-color: #E0A220 !important;
         }
 
-        .gold-glow:hover { box-shadow: 0 0 15px #E0A220; border-color: #E0A220; }
-        
         .modal { transition: opacity 0.3s ease-in-out, visibility 0.3s; }
         .hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
 
@@ -146,10 +144,10 @@
                 <a href="#concept" class="hover:text-warriorGold transition" data-i18n="nav_concept">The Concept</a>
                 <a href="#book" class="bg-warriorGold text-black px-6 py-2 hover:bg-white transition" data-i18n="nav_book">Book Now</a>
                 
-                <div class="flex space-x-1">
-                    <button onclick="setLang('en')" class="text-xs border border-white/20 px-2 py-1 hover:border-warriorGold font-bold text-white transition current-lang" data-lang-btn="en">EN</button>
-                    <button onclick="setLang('fr')" class="text-xs border border-white/20 px-2 py-1 hover:border-warriorGold font-bold text-white transition current-lang" data-lang-btn="fr">FR</button>
-                    <button onclick="setLang('es')" class="text-xs border border-white/20 px-2 py-1 hover:border-warriorGold font-bold text-white transition current-lang" data-lang-btn="es">ES</button>
+                <div class="flex space-x-2 ml-4">
+                    <button onclick="setLang('en')" class="text-xl opacity-50 hover:opacity-100 transition current-lang" data-lang-btn="en" title="English">🇺🇸</button>
+                    <button onclick="setLang('fr')" class="text-xl opacity-50 hover:opacity-100 transition current-lang" data-lang-btn="fr" title="Français">🇫🇷</button>
+                    <button onclick="setLang('es')" class="text-xl opacity-50 hover:opacity-100 transition current-lang" data-lang-btn="es" title="Español">🇪🇸</button>
                 </div>
             </div>
 
@@ -164,13 +162,12 @@
     <div id="mobileMenu" class="fixed inset-0 bg-deepBlack z-40 flex flex-col items-center justify-center space-y-8 menu-closed md:hidden border-l border-warriorGold/20">
         <a href="#packages" onclick="toggleMenu()" class="font-display text-4xl text-white hover:text-warriorGold uppercase" data-i18n="nav_packages">Packages</a>
         <a href="#concept" onclick="toggleMenu()" class="font-display text-4xl text-white hover:text-warriorGold uppercase" data-i18n="nav_concept">Concept</a>
-        <a href="#about" onclick="toggleMenu()" class="font-display text-4xl text-white hover:text-warriorGold uppercase" data-i18n="nav_about">About</a>
         <a href="#book" onclick="toggleMenu()" class="font-display text-4xl text-warriorGold border-b-2 border-warriorGold pb-1" data-i18n="nav_book">Book Now</a>
 
-        <div class="mt-8 flex gap-4">
-            <button onclick="setLang('en'); toggleMenu()" class="px-4 py-2 border border-white/20 text-white font-bold hover:bg-warriorGold hover:text-black" data-lang-btn-mobile="en">EN</button>
-            <button onclick="setLang('fr'); toggleMenu()" class="px-4 py-2 border border-white/20 text-white font-bold hover:bg-warriorGold hover:text-black" data-lang-btn-mobile="fr">FR</button>
-            <button onclick="setLang('es'); toggleMenu()" class="px-4 py-2 border border-white/20 text-white font-bold hover:bg-warriorGold hover:text-black" data-lang-btn-mobile="es">ES</button>
+        <div class="mt-8 flex gap-6">
+            <button onclick="setLang('en'); toggleMenu()" class="text-4xl grayscale hover:grayscale-0 transition" data-lang-btn-mobile="en">🇺🇸</button>
+            <button onclick="setLang('fr'); toggleMenu()" class="text-4xl grayscale hover:grayscale-0 transition" data-lang-btn-mobile="fr">🇫🇷</button>
+            <button onclick="setLang('es'); toggleMenu()" class="text-4xl grayscale hover:grayscale-0 transition" data-lang-btn-mobile="es">🇪🇸</button>
         </div>
     </div>
 
@@ -200,16 +197,10 @@
                     View Packages
                 </a>
             </div>
-
-            <div class="mt-12 flex flex-col md:flex-row justify-center gap-2 md:gap-6 text-xs md:text-sm text-steelGrey font-bold uppercase tracking-wider opacity-80">
-                <span data-i18n="hero_badge_1">★ Rated 5/5 by Adventurers</span>
-                <span class="hidden md:inline">•</span>
-                <span data-i18n="hero_badge_2">★ Texas Certified Outdoor Experience</span>
-            </div>
         </div>
     </section>
 
-    <section id="concept" class="py-24 bg-deepBlack border-b border-white/5 fire-embers">
+    <section id="concept" class="py-24 bg-deepBlack border-b border-white/5 fire-embers bg-scanlines">
         <div class="container mx-auto px-6 text-center relative z-10">
             <h2 class="font-display text-4xl md:text-5xl text-white mb-6 uppercase" data-i18n="concept_title">A New Breed of Hunting Experience</h2>
             <p class="max-w-2xl mx-auto text-lg text-steelGrey mb-12">
@@ -256,12 +247,8 @@
                         <li class="flex items-center" data-i18n="pkg_1_feat3">✓ Viking Tracking</li>
                         <li class="flex items-center text-white" data-i18n="pkg_1_feat4">✓ Pro Photos Included</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 
-                        bg-warriorGold text-black font-display uppercase tracking-wider 
-                        border-2 border-warriorGold glow-on-hover-btn-white 
-                        hover:bg-white hover:text-black transition" data-i18n="btn_book">Book Now</a>
+                    <a href="#book" class="block text-center w-full py-3 bg-warriorGold text-black font-display uppercase tracking-wider hover:bg-white transition" data-i18n="btn_book">Book Now</a>
                 </div>
-
                 <div class="relative bg-deepBlack border border-white/10 p-6 flex flex-col glow-on-hover transition duration-300">
                     <h3 class="font-display text-3xl text-white mb-2 uppercase" data-i18n="pkg_2_title">Night Excursion</h3>
                     <div class="text-4xl font-display text-white mb-6">$399<span class="text-lg text-steelGrey font-body">- $599</span></div>
@@ -270,12 +257,8 @@
                         <li class="flex items-center" data-i18n="pkg_2_feat2">✓ Hog Hunting</li>
                         <li class="flex items-center" data-i18n="pkg_2_feat3">✓ Thermal Optics</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 
-                        bg-deepBlack text-warriorGold font-display uppercase tracking-wider 
-                        border-2 border-warriorGold glow-on-hover-btn-gold 
-                        hover:bg-warriorGold hover:text-black transition" data-i18n="btn_book_exp">Book Experience</a>
+                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase tracking-wider hover:bg-warriorGold hover:text-black transition" data-i18n="btn_book_exp">Book Experience</a>
                 </div>
-
                 <div class="relative bg-deepBlack border border-white/10 p-6 flex flex-col glow-on-hover transition duration-300">
                     <h3 class="font-display text-3xl text-white mb-2 uppercase" data-i18n="pkg_3_title">Tactical Range</h3>
                     <div class="text-4xl font-display text-white mb-6">$129<span class="text-lg text-steelGrey font-body">- $249</span></div>
@@ -284,12 +267,8 @@
                         <li class="flex items-center" data-i18n="pkg_3_feat2">✓ Tactical Drills</li>
                         <li class="flex items-center" data-i18n="pkg_3_feat3">✓ Pro Coaching</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 
-                        bg-deepBlack text-warriorGold font-display uppercase tracking-wider 
-                        border-2 border-warriorGold glow-on-hover-btn-gold 
-                        hover:bg-warriorGold hover:text-black transition" data-i18n="btn_start_shoot">Start Shooting</a>
+                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase tracking-wider hover:bg-warriorGold hover:text-black transition" data-i18n="btn_start_shoot">Start Shooting</a>
                 </div>
-
                 <div class="relative bg-deepBlack border border-white/10 p-6 flex flex-col glow-on-hover transition duration-300">
                     <h3 class="font-display text-3xl text-white mb-2 uppercase" data-i18n="pkg_4_title">Survival</h3>
                     <div class="text-4xl font-display text-white mb-6">$299<span class="text-lg text-steelGrey font-body">- $499</span></div>
@@ -298,23 +277,22 @@
                         <li class="flex items-center" data-i18n="pkg_4_feat2">✓ Fire Starting</li>
                         <li class="flex items-center" data-i18n="pkg_4_feat3">✓ Raw Survival</li>
                     </ul>
-                    <a href="#book" class="block text-center w-full py-3 
-                        bg-deepBlack text-warriorGold font-display uppercase tracking-wider 
-                        border-2 border-warriorGold glow-on-hover-btn-gold 
-                        hover:bg-warriorGold hover:text-black transition" data-i18n="btn_join_course">Join Course</a>
+                    <a href="#book" class="block text-center w-full py-3 border-2 border-warriorGold text-warriorGold font-display uppercase tracking-wider hover:bg-warriorGold hover:text-black transition" data-i18n="btn_join_course">Join Course</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-milGreen/20 border-y border-white/5">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="font-display text-6xl text-white/10 absolute left-0 right-0 -mt-10 select-none" data-i18n="testimonials_bg">TESTIMONIALS</h3>
-            <div class="relative z-10">
-                <p class="text-xl md:text-2xl text-white italic font-light mb-6" data-i18n="testimonial_text">"I came looking for a hunt, I left with a brotherhood. The most raw experience of my life."</p>
-                <div class="flex justify-center items-center gap-4">
-                    <div class="text-warriorGold text-xl">★★★★★</div>
-                    <p class="font-bold text-white uppercase tracking-wider">— Mark D., Austin TX</p>
+    <section class="py-24 bg-deepBlack fire-embers bg-scanlines border-y border-white/5">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h3 class="font-display text-6xl md:text-8xl text-white/5 absolute left-0 right-0 -mt-10 md:-mt-16 select-none" data-i18n="testimonials_bg">TESTIMONIALS</h3>
+            <div class="relative z-10 pt-10">
+                <p class="text-2xl md:text-4xl text-white italic font-light mb-8 max-w-4xl mx-auto leading-tight" data-i18n="testimonial_text">
+                    "I came looking for a hunt, I left with a brotherhood. The most raw experience of my life."
+                </p>
+                <div class="flex flex-col items-center gap-2">
+                    <div class="text-warriorGold text-2xl">★★★★★</div>
+                    <p class="font-bold text-white uppercase tracking-[0.2em]">— Mark D., Austin TX</p>
                 </div>
             </div>
         </div>
@@ -353,23 +331,23 @@
         </div>
     </section>
 
-    <footer class="bg-deepBlack border-t border-white/10 py-12 text-center md:text-left fire-embers">
-        <div class="container mx-auto px-6 grid md:grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
-            <div class="col-span-2">
+    <footer class="bg-deepBlack border-t border-white/10 py-12 fire-embers bg-scanlines">
+        <div class="container mx-auto px-6 grid md:grid-cols-4 gap-8 relative z-10">
+            <div class="col-span-2 text-center md:text-left">
                 <h4 class="font-display text-3xl text-white mb-4">PRIMITIVE TEXAS RANCH</h4>
                 <p class="text-steelGrey text-sm max-w-sm mx-auto md:mx-0" data-i18n="footer_desc">
                     The ultimate fusion of primitive instinct and modern warfare. 
                     Forging warriors in the Texas heat.
                 </p>
             </div>
-            <div>
+            <div class="text-center md:text-left">
                 <h5 class="text-white font-bold uppercase mb-4" data-i18n="footer_quicklinks">Quick Links</h5>
                 <ul class="text-steelGrey text-sm space-y-2">
                     <li><a href="#packages" class="hover:text-warriorGold" data-i18n="nav_packages">Packages</a></li>
-                    <li><a href="#about" class="hover:text-warriorGold" data-i18n="nav_about">About Us</a></li>
+                    <li><a href="#concept" class="hover:text-warriorGold" data-i18n="nav_concept">Concept</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="text-center md:text-left">
                 <h5 class="text-white font-bold uppercase mb-4">Contact</h5>
                 <ul class="text-steelGrey text-sm space-y-2">
                     <li>contact@warriorranch.com</li>
@@ -378,7 +356,7 @@
             </div>
         </div>
         <div class="text-center text-white/20 text-xs mt-12 relative z-10">
-            &copy; 2024 Primitive Modern Hunt. All Rights Reserved.
+            &copy; 2026 Primitive Modern Hunt. All Rights Reserved.
         </div>
     </footer>
 
@@ -391,20 +369,18 @@
     </div>
 
     <script>
-        const supportedLangs = ['en', 'fr', 'es'];
         const translations = {
             en: {
-                nav_packages: "Packages", nav_concept: "The Concept", nav_about: "About", nav_book: "Book Now",
+                nav_packages: "Packages", nav_concept: "The Concept", nav_book: "Book Now",
                 hero_subtitle: "Primitive Modern Hunt",
                 hero_title: "Become the Warrior <br><span class='text-transparent bg-clip-text bg-gradient-to-r from-white to-steelGrey'>Your Ancestors</span> <br>Would Respect.",
                 hero_cta_book: "Book Your Experience", hero_cta_view: "View Packages",
-                hero_badge_1: "★ Rated 5/5 by Adventurers", hero_badge_2: "★ Texas Certified Outdoor Experience",
                 concept_title: "A New Breed of Hunting Experience",
                 concept_desc: "A fusion of primitive techniques, modern weapons, tribal adrenaline, and survival challenges.",
                 concept_punchline: "You don't just hunt. You become a warrior.",
                 concept_1_title: "PRIMITIVE", concept_1_desc: "Bow, Spear, Raw Tracking.",
                 concept_2_title: "TACTICAL", concept_2_desc: "Modern Drills, Night Vision.",
-                concept_3_title: "IMMERSIF", concept_3_desc: "Tribal Rites, Deep Nature.",
+                concept_3_title: "IMMERSIVE", concept_3_desc: "Tribal Rites, Deep Nature.",
                 packages_title: "Choose Your Path", badge_popular: "Most Popular",
                 pkg_1_title: "Primitive Hunt", pkg_1_feat1: "✓ Pickup Shooting", pkg_1_feat2: "✓ Spear Throwing", pkg_1_feat3: "✓ Viking Tracking", pkg_1_feat4: "✓ Pro Photos Included",
                 btn_book: "Book Now", btn_book_exp: "Book Experience", btn_start_shoot: "Start Shooting", btn_join_course: "Join Course",
@@ -420,11 +396,10 @@
                 select_package_default: "Select Package...", select_primitive: "Primitive Hunt Experience ($149+)", select_night: "Night Hunting Excursion ($399+)", select_tactical: "Tactical Shooting Range ($129+)", select_survival: "Survival Training ($299+)",
             },
             fr: {
-                nav_packages: "Offres", nav_concept: "Le Concept", nav_about: "À Propos", nav_book: "Réserver",
+                nav_packages: "Offres", nav_concept: "Le Concept", nav_book: "Réserver",
                 hero_subtitle: "Chasse Primitive Moderne",
                 hero_title: "Deviens le Guerrier <br><span class='text-transparent bg-clip-text bg-gradient-to-r from-white to-steelGrey'>Que tes Ancêtres</span> <br>Respecteraient.",
                 hero_cta_book: "Réserver l'expérience", hero_cta_view: "Voir les Offres",
-                hero_badge_1: "★ Noté 5/5 par les Aventuriers", hero_badge_2: "★ Expérience Certifiée Texas",
                 concept_title: "Une Nouvelle Race d'Expérience",
                 concept_desc: "Une fusion de techniques primitives, d'armes modernes, d'adrénaline tribale et de défis de survie.",
                 concept_punchline: "Tu ne fais pas que chasser. Tu deviens un guerrier.",
@@ -446,11 +421,10 @@
                 select_package_default: "Sélectionner un Forfait...", select_primitive: "Expérience Chasse Primitive (149$+) ", select_night: "Excursion de Chasse Nocturne (399$+) ", select_tactical: "Stand de Tir Tactique (129$+) ", select_survival: "Entraînement de Survie (299$+) ",
             },
             es: {
-                nav_packages: "Paquetes", nav_concept: "El Concept", nav_about: "Nosotros", nav_book: "Reservar",
+                nav_packages: "Paquetes", nav_concept: "El Concept", nav_book: "Reservar",
                 hero_subtitle: "Caza Primitiva Moderna",
                 hero_title: "Conviértete en el Guerrero <br><span class='text-transparent bg-clip-text bg-gradient-to-r from-white to-steelGrey'>Que tus Ancestros</span> <br>Respetarían.",
                 hero_cta_book: "Reserva tu Experiencia", hero_cta_view: "Ver Paquetes",
-                hero_badge_1: "★ Valorado 5/5 por Aventureros", hero_badge_2: "★ Experiencia Certificada en Texas",
                 concept_title: "Una Nueva Raza de Experiencia",
                 concept_desc: "Una fusión de técnicas primitivas, armas modernas, adrenalina tribal y desafíos de supervivencia.",
                 concept_punchline: "No solo cazas. Te conviertes en un guerrero.",
@@ -498,18 +472,19 @@
 
                 updateSelectOptions(lang);
 
+                // Update Flag Buttons State
                 document.querySelectorAll('.current-lang').forEach(btn => {
-                    btn.classList.remove('border-warriorGold', 'text-warriorGold');
-                    btn.classList.add('border-white/20', 'text-white');
+                    btn.classList.add('opacity-50');
                     if (btn.getAttribute('data-lang-btn') === lang) {
-                        btn.classList.add('border-warriorGold', 'text-warriorGold');
-                        btn.classList.remove('border-white/20', 'text-white');
+                        btn.classList.remove('opacity-50');
+                        btn.classList.add('opacity-100');
                     }
                 });
+                
                 document.querySelectorAll('[data-lang-btn-mobile]').forEach(btn => {
-                    btn.classList.remove('bg-warriorGold', 'text-black');
+                    btn.classList.add('grayscale');
                     if (btn.getAttribute('data-lang-btn-mobile') === lang) {
-                        btn.classList.add('bg-warriorGold', 'text-black');
+                        btn.classList.remove('grayscale');
                     }
                 });
 
@@ -537,9 +512,7 @@
         const burgerBtn = document.getElementById('burgerBtn');
         const mobileMenu = document.getElementById('mobileMenu');
 
-        burgerBtn.addEventListener('click', () => {
-            toggleMenu();
-        });
+        burgerBtn.addEventListener('click', () => toggleMenu());
 
         function toggleMenu() {
             if (mobileMenu.classList.contains('menu-closed')) {
